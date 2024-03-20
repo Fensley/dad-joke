@@ -1,26 +1,38 @@
-const quote = document.getElementById("joke");
+const joke = document.getElementById("joke");
 
-const btn = document.getElementById("button");
+const button = document.getElementById("button");;
 
-// console.log(quote , button);
+ button.addEventListener("click" , theapi);
 
-const random = " I always wanted to look into why I procrastinate, but I keep putting it off." ;
+theapi()
+// .then
+// function theapi(){ 
 
+//   const config = {
+//   headers:{
+//     Accept:'application/json',
+//   },
+//   }
 
-function getUsers() {
-  fetch("https://randomuser.me/api/?results=50")
-    .then((results) => {
-      return results.json();
-    })
-    .then((data) => {
-      console.log(data);
-      // Access your data here
-    });
-}
+//   fetch("https://icanhazdadjoke.com" ,config )
+//  .then(res => res.json())
+//  .then(data => joke.innerHTML = data.joke);
+// };
+ 
+// async/await
 
-getUsers();
+async function theapi(){ 
 
+  const config = {
+  headers:{
+    Accept:'application/json',
+  },
+  }
 
-btn.addEventListener("click" ,() =>{
-  quote.innerHTML = getUsers()
-})
+  const fensley = await fetch("https://icanhazdadjoke.com" ,config );
+  const data = await fensley.json()
+   joke.innerHTML = data.joke
+};
+ 
+ 
+ 
